@@ -1,21 +1,48 @@
 import { createSlice, configureStore, createStore } from '@reduxjs/toolkit';
 
+export interface Book {
+  id: number;
+  title: string;
+  description: string;
+}
+
+interface State {
+  books: Book[]
+}
+
+const initialState: State = {
+  books: []
+}
+
 const booksSlice = createSlice({
   name: 'books',
-  initialState: {
-    value: 0
-  },
+  initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1
+    addBook: (state, action) => {
+      const { payload } = action;
+
+      const newBooksArray = state.books.map((item, index) => {
+        return {
+          ...item,
+          id: index
+        }
+      })
+
+      console.log(newBooksArray)
+
+      state.books = [...newBooksArray, { ...payload, id: newBooksArray.length - 1 }]
     },
-    decrement: (state) => {
-      state.value -= 1
+    removeBook: (state, action) => {
+      const { payload } = action;
+
+      const newList = state.books.filter(item => item.id != payload.id)
+
+      state.books = newList
     },
   }
 })
 
-export const { increment, decrement } = booksSlice.actions
+export const { addBook, removeBook } = booksSlice.actions
 
 export const store = configureStore({
   reducer: booksSlice.reducer
@@ -23,4 +50,4 @@ export const store = configureStore({
 
 // store.subscribe(() => console.log(store.getState()))
 
-export const getAmount = (state: any) => state.value;
+export const getBooks = (state: State) => state.books;

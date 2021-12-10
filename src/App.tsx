@@ -16,13 +16,21 @@ export default App;
 
 const Counter: React.FC = () => {
   const dispatch = useDispatch();
-  const counter = useSelector(getAmount)
+  const counter = useSelector(getAmount);
 
   return (
     <>
-      <span>{counter}</span>
-      <button onClick={() => dispatch(increment())} >increment</button>
-      <button onClick={() => dispatch(decrement())} >decrement</button>
+      <div className="container">
+        <div className="row mb-4 mt-4">
+          <span className='text-center fs-2' >{counter}</span>
+        </div>
+        <div className="row">
+          <div className='d-grid gap-2 col-6 mx-auto'>
+            <button type='button' className="btn btn-primary" onClick={() => dispatch(increment())} >increment</button>
+            <button type='button' className="btn btn-primary" onClick={() => dispatch(decrement())} >decrement</button>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

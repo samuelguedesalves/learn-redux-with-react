@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getBooks } from "../../books";
 
-const Header = () => {
+const Header: React.FC = () => {
   const books = useSelector(getBooks);
 
   return (

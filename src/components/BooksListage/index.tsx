@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { getBooks } from "../../books";
 import BookItem from "./BookItem";
 
-const BooksListage = () => {
+const BooksListage: React.FC = () => {
   const books = useSelector(getBooks);
 
   return (

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addBook } from "../../books";
 
-const Form = () => {
+const Form: React.FC = () => {
   const navigate = useNavigate();
   const [info, setInfo] = useState({ title: "", description: "" });
   const dispatch = useDispatch();

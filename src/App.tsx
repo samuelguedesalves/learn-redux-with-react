@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { store } from "./books";
 import Header from "./components/Header";
 import Form from "./components/Form";
-import BooksListage from "./components/BooksListage";
 import Starter from "./components/Starter";
 
 const App: React.FC = () => {

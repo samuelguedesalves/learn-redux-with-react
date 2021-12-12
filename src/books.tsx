@@ -1,4 +1,4 @@
-import { createSlice, configureStore, createStore } from "@reduxjs/toolkit";
+import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 export interface Book {
   id: number;

@@ -1,4 +1,4 @@
-import { createSlice, configureStore, createStore } from '@reduxjs/toolkit';
+import { createSlice, configureStore, createStore } from "@reduxjs/toolkit";
 
 export interface Book {
   id: number;
@@ -7,47 +7,43 @@ export interface Book {
 }
 
 interface State {
-  books: Book[]
+  books: Book[];
 }
 
 const initialState: State = {
-  books: []
-}
+  books: [],
+};
 
 const booksSlice = createSlice({
-  name: 'books',
+  name: "books",
   initialState,
   reducers: {
     addBook: (state, action) => {
       const { payload } = action;
 
-      const newBooksArray = state.books.map((item, index) => {
-        return {
-          ...item,
-          id: index
-        }
-      })
+      const newArray = [...state.books, { ...payload }].reduce(
+        (accumulator: Array<Book>, current: Book, index, array) => {
+          return [...accumulator, { ...current, id: index }];
+        },
+        []
+      );
 
-      console.log(newBooksArray)
-
-      state.books = [...newBooksArray, { ...payload, id: newBooksArray.length - 1 }]
+      state.books = newArray;
     },
     removeBook: (state, action) => {
       const { payload } = action;
 
-      const newList = state.books.filter(item => item.id != payload.id)
+      const newArray = state.books.filter((item) => item.id !== payload.id);
 
-      state.books = newList
+      state.books = newArray;
     },
-  }
-})
+  },
+});
 
-export const { addBook, removeBook } = booksSlice.actions
+export const { addBook, removeBook } = booksSlice.actions;
 
 export const store = configureStore({
-  reducer: booksSlice.reducer
-})
-
-// store.subscribe(() => console.log(store.getState()))
+  reducer: booksSlice.reducer,
+});
 
 export const getBooks = (state: State) => state.books;

@@ -60,15 +60,17 @@ const BookInfo: React.FC = () => {
           onClick={removeAtlist}
         >Remove book</Button>
       </Grid>
-      <Box>
+      <Box
+        paddingTop="4"
+      >
         <Text
-          fontSize="lg"
+          fontSize="xl"
           fontWeight="medium"
           marginBottom="2"
           textAlign="center"
         >{book?.title}</Text>
         <Text
-          fontSize="xl"
+          fontSize="lg"
           textAlign="center"
         >{book?.description}</Text>
       </Box>

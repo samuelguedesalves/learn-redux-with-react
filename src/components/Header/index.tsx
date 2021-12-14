@@ -10,7 +10,7 @@ const Header: React.FC = () => {
   return (
     <Box bgColor="blue.400" >
       <Container 
-        maxW="container.lg" 
+        maxW="container.sm" 
         paddingY="3" 
         display="flex" 
         justifyContent="space-between"

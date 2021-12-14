@@ -24,7 +24,7 @@ const Form: React.FC = () => {
   return (
     <Box>
       <Container 
-        maxWidth="container.lg" 
+        maxWidth="container.sm" 
         paddingTop="3"
       >
         <Grid
@@ -50,32 +50,30 @@ const Form: React.FC = () => {
           >Create a book</Text>
         </Grid>
 
-        <Container maxWidth="container.sm" >
-          <Box marginBottom="3" >
-            <Text fontSize="lg" >Book name</Text>
-            <Input 
-              placeholder="place here book name" 
-              onChange={(e) => setInfo({ ...info, title: e.target.value })}
-            />
-          </Box>
-          
-          <Box marginBottom="3">
-            <Text fontSize="lg" >Book description</Text>
-            <Textarea 
-              placeholder='place here book description' 
-              onChange={(e) => setInfo({ ...info, description: e.target.value })}
-            />
-          </Box>
+        <Box marginBottom="3" >
+          <Text fontSize="lg" >Book name</Text>
+          <Input 
+            placeholder="place here book name" 
+            onChange={(e) => setInfo({ ...info, title: e.target.value })}
+          />
+        </Box>
+        
+        <Box marginBottom="3">
+          <Text fontSize="lg" >Book description</Text>
+          <Textarea 
+            placeholder='place here book description' 
+            onChange={(e) => setInfo({ ...info, description: e.target.value })}
+          />
+        </Box>
 
-          <Button
-            width="full"
-            colorScheme="blue"
-            onClick={saveBook}
-            leftIcon={<FaPlus/>}
-          >
-            Save book
-          </Button>
-        </Container>
+        <Button
+          width="full"
+          colorScheme="blue"
+          onClick={saveBook}
+          leftIcon={<FaPlus/>}
+        >
+          Save book
+        </Button>
       </Container>
     </Box>
   );

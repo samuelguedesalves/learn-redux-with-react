@@ -1,3 +1,4 @@
+import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
 import { getBooks } from "../../books";
@@ -7,8 +8,7 @@ const BooksListage: React.FC = () => {
   const books = useSelector(getBooks);
 
   return (
-    <div className="w-100 mt-3">
-      <span className="d-block fs-4 mb-2">Books list</span>
+    <Box>
       {books.map((item, index) => (
         <BookItem
           key={index}
@@ -17,7 +17,7 @@ const BooksListage: React.FC = () => {
           description={item.description}
         />
       ))}
-    </div>
+    </Box>
   );
 };
 

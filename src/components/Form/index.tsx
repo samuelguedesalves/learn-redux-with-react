@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addBook } from "../../books";
+import { Box, Button, Container, Grid, Input, Text, Textarea } from "@chakra-ui/react";
+import { FaArrowLeft, FaPlus } from "react-icons/fa";
 
 const Form: React.FC = () => {
   const navigate = useNavigate();
@@ -20,47 +22,62 @@ const Form: React.FC = () => {
   };
 
   return (
-    <div className="container w-50 mt-4">
-      <div className="row mb-4">
-        <button
-          className="btn btn-link d-flex align-items-center text-decoration-none"
-          onClick={goToHome}
-        >
-          <i className="fas fa-arrow-left fs-5"></i>
-          <span className="d-block fs-5" style={{ marginLeft: 12 }}>
-            Back
-          </span>
-        </button>
-      </div>
-
-      <h2 className="fs-4">Create a book</h2>
-      <div className="mb-3">
-        <label className="form-label">Book name</label>
-        <input
-          type="text"
-          className="form-control"
-          id="exampleFormControlInput1"
-          placeholder="place the book title"
-          onChange={(e) => setInfo({ ...info, title: e.target.value })}
-        />
-      </div>
-      <div className="mb-3">
-        <label className="form-label">Description</label>
-        <textarea
-          className="form-control"
-          id="exampleFormControlTextarea1"
-          onChange={(e) => setInfo({ ...info, description: e.target.value })}
-        ></textarea>
-      </div>
-
-      <button
-        type="button"
-        className="btn btn-primary w-100"
-        onClick={saveBook}
+    <Box>
+      <Container 
+        maxWidth="container.lg" 
+        paddingTop="3"
       >
-        Add book
-      </button>
-    </div>
+        <Grid
+          gridTemplateColumns="1fr 2fr 1fr"
+          templateAreas="'back-button screen-title .'"
+          justifyContent="center"
+          alignItems="center"
+          marginBottom="6"
+        >
+          <Button
+            gridArea="back-button" 
+            leftIcon={<FaArrowLeft/>}
+            colorScheme="gray"
+            width="fit-content"
+            onClick={goToHome}
+          >Back to listage</Button>
+          <Text
+            gridArea="screen-title"
+            textAlign="center"
+            fontSize="2xl"
+            fontWeight="medium"
+            color="gray.600"
+          >Create a book</Text>
+        </Grid>
+
+        <Container maxWidth="container.sm" >
+          <Box marginBottom="3" >
+            <Text fontSize="lg" >Book name</Text>
+            <Input 
+              placeholder="place here book name" 
+              onChange={(e) => setInfo({ ...info, title: e.target.value })}
+            />
+          </Box>
+          
+          <Box marginBottom="3">
+            <Text fontSize="lg" >Book description</Text>
+            <Textarea 
+              placeholder='place here book description' 
+              onChange={(e) => setInfo({ ...info, description: e.target.value })}
+            />
+          </Box>
+
+          <Button
+            width="full"
+            colorScheme="blue"
+            onClick={saveBook}
+            leftIcon={<FaPlus/>}
+          >
+            Save book
+          </Button>
+        </Container>
+      </Container>
+    </Box>
   );
 };
 

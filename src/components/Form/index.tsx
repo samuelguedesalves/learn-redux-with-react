@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addBook } from "../../books";
-import { Box, Button, Container, Grid, Input, Text, Textarea } from "@chakra-ui/react";
 import { FaArrowLeft, FaPlus } from "react-icons/fa";
+import { 
+  Box, 
+  Button, 
+  Container, 
+  Grid, 
+  Input, 
+  Text, 
+  Textarea 
+} from "@chakra-ui/react";
 
 const Form: React.FC = () => {
   const navigate = useNavigate();

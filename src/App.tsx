@@ -5,6 +5,7 @@ import { store } from "./books";
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Starter from "./components/Starter";
+import BookInfo from "./components/BookInfo";
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Starter />} />
             <Route path="/new" element={<Form />} />
+            <Route path="/info/:id" element={<BookInfo />} />
           </Routes>
         </BrowserRouter>
       </Provider>

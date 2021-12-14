@@ -1,8 +1,8 @@
 import React from "react";
-import { Box, Container, Heading, Text } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { FaFile } from 'react-icons/fa';
 import { getBooks } from "../../books";
+import { Box, Container, Heading, Text } from "@chakra-ui/react";
 
 const Header: React.FC = () => {
   const books = useSelector(getBooks);

@@ -1,15 +1,15 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { useNavigate } from "react-router-dom";
+import { Box, Text } from '@chakra-ui/react';
 import { FaArrowRight } from 'react-icons/fa';
-import { Book, removeBook } from "../../../books";
+import { Book } from "../../../books";
 
 const BookItem: React.FC<Book> = ({ id, title, description }) => {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const removeAtList = () => {
-    dispatch(removeBook({ id }));
-  };
+  const goToDetails = () => {
+    navigate(`/info/${id}`)
+  }
 
   return (
     <Box
@@ -20,6 +20,7 @@ const BookItem: React.FC<Book> = ({ id, title, description }) => {
       mb="3"
       display="grid"
       gridTemplateColumns="1fr 40px"
+      onClick={goToDetails}
     >
       <Box>
         <Text
@@ -40,18 +41,6 @@ const BookItem: React.FC<Book> = ({ id, title, description }) => {
         <FaArrowRight/>
       </Box>
     </Box>
-    // <div className="w-100 card mb-3">
-    //   <div className="card-body">
-    //     <h5 className="card-title">{title}</h5>
-    //     {/* <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6> */}
-    //     <p className="card-text">{description}</p>
-    //     {/* <a href="#" className="card-link">See more</a> */}
-    //     {/* <a href="#" className="card-link">Another link</a> */}
-    //     <button className="btn btn-danger w-100" onClick={removeAtList}>
-    //       Remover
-    //     </button>
-    //   </div>
-    // </div>
   );
 };
 
